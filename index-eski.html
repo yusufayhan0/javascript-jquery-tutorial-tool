@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <style>
+        #card1 {
+            width: 20rem;
+            border-radius: 3px;
+            position: relative;
+            top: 20px;
+            left: 20px;
+
+            z-index: 10;
+        }
+
+        #panel_container div{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 9;
+        }
+    </style>
+
+</head>
+
+<body style="height: 3000px;">
+
+
+    <div id="card1" class="card">
+        <div class="card-body">
+            <h5 class="card-title">bu yazı div 1 yazısı</h5>
+            <p id="degistir" class="card-text">bu yazı div 1 yazısı</p>
+        </div>
+    </div>
+
+<div id="panel_container">
+    <div id="panel_sag"></div>
+    <div id="panel_sol"></div>
+    <div id="panel_alt"></div>
+    <div id="panel_ust"></div>
+</div>
+
+    <div class="row" style="width:auto; margin-left:2%;margin-right:2%;">
+
+        <div class="col-md-12 col-lg-12" style="margin-top: 40px;">
+            <div class="row">
+                <div class="col-md-4"> <button id="div1" class="btn btn-primary"
+                        style="border-radius:3px;">Buton1</button></div>
+                <div class="col-md-4"> <button id="div2" class="btn btn-primary"
+                        style="border-radius:3px;">Buton2</button></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-5"><button id="div3" class="btn btn-primary"
+                                style="border-radius:3px;">Buton3</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top:150px;">
+
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-2"> <button id="div4" class="btn btn-primary"
+                        style="border-radius:3px;">Buton4</button></div>
+                <div class="col-md-2"> <button id="div5" class="btn btn-primary"
+                        style="border-radius:3px;">Buton5</button></div>
+                <div class="col-md-2"> <button id="div6" class="btn btn-primary"
+                        style="border-radius:3px;">Buton6</button></div>
+            </div>
+
+        </div>
+
+        <div class="col-md-12" style="margin-top:150px;">
+            <div class="col-md-2"> <button id="tekrar" class="btn btn-primary"
+                    style="border-radius:3px;display: none;">Tekrar Et</button></div>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            var textler = [//açıklama 
+                "bu yazı div 1 yazısı",
+                "bu yazı div 2 yazısı",
+                "bu yazı div 3 yazısı",
+                "bu yazı div 4 yazısı",
+                "bu yazı div 5 yazısı",
+                "bu yazı div 6 yazısı"
+            ];
+
+            var butonAdlari = [//buton id'leri
+                "#div1",
+                "#div2",
+                "#div3",
+                "#div4",
+                "#div5",
+                "#div6"
+            ];
+
+            var index = 0;
+            var tut = butonAdlari[0];
+
+            $(window).resize(function () {//pencere boyutu değiştiğinde
+                if ($(tut).offset().left > $(window).width() - $("#card1").width()) {
+                    $("#yaz").text($(tut).offset().left);
+                    $("#card1").css("left", $(window).width() - $("#card1").width() - 10 + "px");
+                    $("#card1").css("top", $(tut).offset().top + 55 + "px");
+                }
+                else {
+                    $("#card1").css("top", $(tut).offset().top + 55 + "px");
+                    $("#card1").css("left", $(tut).offset().left + "px");
+                }
+            });
+
+            $("#card1").css("top", $(tut).offset().top + 55 + "px");
+            $("#card1").css("left", $(tut).offset().left + "px");
+            function defaultkod() {//default
+                $(butonAdlari[index]).css("font-size", "1rem");
+                index = 0;
+                $("#card1").css("background-color", "#ffffff");
+                $("#degistir").text(textler[index]);
+                $(".card-title").text(textler[index]);
+                tut = butonAdlari[0];
+                $("#card1").css("top", $(tut).offset().top + 55 + "px");
+                $("#card1").css("left", $(tut).offset().left + "px");
+                $("button").prop('disabled', true);
+                $(butonAdlari[0]).prop('disabled', false);
+                $(butonAdlari[0]).css("font-size", "1.3rem");
+            }
+
+            $("#tekrar").click(function () {//tekrar edilmek istendiğinde çalışır
+                defaultkod();
+                $("#tekrar").css("display", "none");
+            });
+
+            $.each(butonAdlari, function (deger, value) {
+                $(value).click(function () {
+
+                    if (index == butonAdlari.length - 1) {//son butona gelindiğinde
+                        $("#degistir").text("Bitti");
+                        $(".card-title").text("Bitti");
+                        alert("bitti");
+                        $("button").prop('disabled', true);
+                        $("#tekrar").prop('disabled', false);
+                        $("#tekrar").css("display", "block");
+                        return;
+                    }
+
+                    $("#degistir").text(textler[++index]);
+                    $(".card-title").text(textler[index]);
+                    $("#card1").css("background-color", "#" + Math.floor(Math.random() * 999999));
+                    //$(butonAdlari[index]).css("background-color","#"+Math.floor(Math.random()*999999)); //buton rengi değiştirme
+                    tut = butonAdlari[index];
+                    if ($(butonAdlari[index]).offset().left > $(window).width() - $("#card1").width()) {
+                        $("#yaz").text($(butonAdlari[index]).offset().left);
+                        $("#card1").css("left", $(window).width() - $("#card1").width() - 10 + "px");
+                        $("#card1").css("top", $(butonAdlari[index]).offset().top + 55 + "px");
+                    }
+                    else {
+                        $("#card1").css("top", $(butonAdlari[index]).offset().top + 55 + "px");
+                        $("#card1").css("left", $(butonAdlari[index]).offset().left + "px");
+                    }
+                    $("button").prop('disabled', true);
+                    $(butonAdlari[index]).prop('disabled', false);
+                    $(butonAdlari[index]).prop('disabled', false);
+                    $(butonAdlari[index]).css("font-size", "1.3rem");
+                    $(butonAdlari[index - 1]).css("font-size", "1rem");
+                });
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

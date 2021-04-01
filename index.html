@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="widget.js"></script>
+
+    <style>
+        #card1 {
+            width: 20rem;
+            border-radius: 3px;
+            position: relative;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="height: 3000px;">
+
+        <div id="card1" class="card">
+            <div class="card-body">
+                <h5 class="card-title">bu yazı div 1 yazısı</h5>
+                <p id="degistir" class="card-text">bu yazı div 1 yazısı</p>
+            </div>
+        </div>
+
+        <div id="panel_container">
+            <div id="panel_sol"></div>
+            <div id="panel_ust"></div>
+            <div id="panel_sag"></div>
+            <div id="panel_alt"></div>
+        </div>
+
+        <div class="row" style="width:auto; margin-left:2%;margin-right:2%;">
+
+            <div class="col-md-12 col-lg-12" style="margin-top: 40px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="div1" style="width: 100px; height: 150px;background-color: blue;"></div>
+                    </div>
+                    <div class="col-md-4"> <button id="div2" style="border-radius:3px;"class="btn btn-primary">Buton2</button></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-5"><button id="div3" style="border-radius:3px;"class="btn btn-primary">Buton3</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="margin-top:150px;">
+
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-2"> <button id="div4" style="border-radius:3px;"class="btn btn-primary">Buton4</button></div>
+                    <div class="col-md-2"> <button id="div5" style="border-radius:3px;"class="btn btn-primary">Buton5</button></div>
+                    <div class="col-md-2"> <button id="div6" style="border-radius:3px;"class="btn btn-primary">Buton6</button></div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12" style="margin-top:150px;">
+                <div class="col-md-2"> <button id="tekrar" class="btn btn-primary"
+                        style="border-radius:3px;display: none;">Tekrar Et</button></div>
+            </div>
+
+        </div>
+        
+
+
+
+
+
+        
+    </div>
+</body>
+
+</html>
